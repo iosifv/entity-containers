@@ -26,7 +26,8 @@
       "vighiosif\\ObjectContainers\\": "src/",
       "vighiosif\\ObjectContainers\\Abstracts\\": "src/abstracts/",
       "vighiosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
-      "vighiosif\\ObjectContainers\\Traits\\": "src/traits/"
+      "vighiosif\\ObjectContainers\\Traits\\": "src/traits/",
+      "vighiosif\\ObjectContainers\\Tests\\": "tests/"
     }
   }
 }

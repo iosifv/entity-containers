@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: degola
- * Date: 21.09.15
- * Time: 22:34
- */
+
 
 namespace vighiosif\ObjectContainers\Abstracts\DataModel;
 
