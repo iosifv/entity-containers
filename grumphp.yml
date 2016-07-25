@@ -1,0 +1,45 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    ascii:
+        failed: nopecat.txt
+        succeeded: me-gusta.txt
+    tasks:
+        # This will execute composer validate to make sure that everything is OK
+        composer: ~
+        git_blacklist:
+            keywords:
+                - "die("
+                - "die;"
+                - "exit("
+                - "exit;"
+                - "var_dump("
+                - "var_export("
+        # Lints JSON files
+        jsonlint: ~
+        # Makes sure that the composer.lock file is not using packages with known vulnerabilities
+        securitychecker: ~
+        # This is the much feared code sniffer
+        # available options found with command phpcs -i
+        # PSR1     - self explanatory
+        # PSR2     - self explanatory
+        # PHPCS    - the best I think
+        # PEAR     - looks for documentation
+        # MySource - very restrictive, includes underscores for private
+        # Squiz    - very restrictive, includes underscores for private
+        # Zend     - very restrictive, includes underscores for private
+#        phpcs:
+#            standard: "PSR1,PSR2"
+#            show_warnings: false
+#            tab_width: 4
+#            ignore_patterns: []
+#            sniffs: []
+#            triggered_by: [php]
+        # not working quite well. Should automatically fix some small issues found by phpcs
+#         phpcsfixer:
+#            level: "psr2"
+#            verbose: true
+        # runs the unit tests
+        phpunit:
+            config_file: phpunit.xml
+        phpcbf: ~
