@@ -1,8 +1,11 @@
 <?php
+namespace VighIosif\ObjectContainers\Tests;
 
-namespace vighiosif\ObjectContainers\Tests;
+use VighIosif\ObjectContainers\Classes\User;
 
-class InitializationTest extends\PHPUnit_Framework_TestCase
+require dirname(__FILE__) . '/../vendor/autoload.php';
+
+class InitializationTest extends \PHPUnit_Framework_TestCase
 {
     public function __construct()
     {
@@ -13,6 +16,8 @@ class InitializationTest extends\PHPUnit_Framework_TestCase
 
     public function testFactoryConsistency()
     {
+        $user = new User();
+                
         // Test the getData output
         $this->assertEquals(
             1,

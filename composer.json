@@ -1,5 +1,5 @@
 {
-  "name": "vighiosif/object-containers",
+  "name": "vigh-iosif/object-containers",
   "description": "This is a library for using containers of objects. This structure provides a few neat advantages.",
   "license": "Apache",
   "version": "0.1",
@@ -23,11 +23,12 @@
   },
   "autoload": {
     "psr-4": {
-      "vighiosif\\ObjectContainers\\": "src/",
-      "vighiosif\\ObjectContainers\\Abstracts\\": "src/abstracts/",
-      "vighiosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
-      "vighiosif\\ObjectContainers\\Traits\\": "src/traits/",
-      "vighiosif\\ObjectContainers\\Tests\\": "tests/"
+      "VighIosif\\ObjectContainers\\": "src/",
+      "VighIosif\\ObjectContainers\\Abstracts\\": "src/abstracts/",
+      "VighIosif\\ObjectContainers\\Classes\\": "src/classes/",
+      "VighIosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
+      "VighIosif\\ObjectContainers\\Traits\\": "src/traits/",
+      "VighIosif\\ObjectContainers\\Tests\\": "tests/"
     }
   }
 }

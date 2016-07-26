@@ -1,9 +1,9 @@
 <?php
 
 
-namespace vighiosif\ObjectContainers\Abstracts\DataModel;
+namespace VighIosif\ObjectContainers\Abstracts;
 
-use vighiosif\ObjectContainers\Interfaces\DataModel\Entity;
+use VighIosif\ObjectContainers\Interfaces\Entity;
 
 abstract class EntityContainer implements \IteratorAggregate, \Countable
 {
@@ -14,20 +14,25 @@ abstract class EntityContainer implements \IteratorAggregate, \Countable
     private $list = [];
 
     /**
+     * @param array $entities
+     *
      * @return EntityContainer
+     * @throws EntityContainerException
      */
-    public static function Factory(array $entities = [])
+    public static function factory(array $entities = [])
     {
         $entityClass = static::ENTITY_CLASS;
         $container   = new static();
-        foreach ($entities AS $entity) {
+        foreach ($entities as $entity) {
             if (is_array($entity) || (is_object($entity) && $entity instanceof \stdClass)) {
                 $container->add($entityClass::Factory((array) $entity));
             } elseif ($entity instanceof Entity) {
                 $container->add($entity);
             } else {
-                throw new EntityContainer_Exception('invalid entity value',
-                    EntityContainer_Exception::INVALID_ENTITY_VALUE);
+                throw new EntityContainerException(
+                    'invalid entity value',
+                    EntityContainerException::INVALID_ENTITY_VALUE
+                );
             }
         }
         return $container;
@@ -60,7 +65,7 @@ abstract class EntityContainer implements \IteratorAggregate, \Countable
     {
         $result = [];
         if (is_array($this->list)) {
-            foreach ($this->list AS $entity) {
+            foreach ($this->list as $entity) {
                 /**
                  * @var $entity Entity
                  */
@@ -83,7 +88,7 @@ abstract class EntityContainer implements \IteratorAggregate, \Countable
      */
     public function merge(EntityContainer $container)
     {
-        foreach ($container AS $element) {
+        foreach ($container as $element) {
             /**
              * @var $element Entity
              */
@@ -101,7 +106,7 @@ abstract class EntityContainer implements \IteratorAggregate, \Countable
     public function exists($entities)
     {
         if (is_array($entities)) {
-            foreach ($entities AS $entity) {
+            foreach ($entities as $entity) {
                 if (!array_key_exists($entity, $this->list)) {
                     return false;
                 }
@@ -140,4 +145,3 @@ abstract class EntityContainer implements \IteratorAggregate, \Countable
         return $this;
     }
 }
-

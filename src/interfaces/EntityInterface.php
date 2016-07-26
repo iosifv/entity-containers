@@ -1,5 +1,6 @@
 <?php
-namespace vighiosif\ObjectContainers\Interfaces;
+
+namespace VighIosif\ObjectContainers\Interfaces;
 
 interface EntityInterface
 {

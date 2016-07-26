@@ -1,17 +1,16 @@
 <?php
 /**
  * This file contains the EntityGetData trait
-
  */
 
-namespace vighiosif\ObjectContainers\Traits\DataModel;
+namespace VighIosif\ObjectContainers\Traits;
 
 /**
  * Class EntityMerge
  * This trait contains a method to merge two objects which have methods to deliver an easy way to return key/value
  * arrays from objects with private properties and corresponding get-methods
  *
- * @package vighiosif\ObjectContainers\Traits\DataModel
+ * @package VighIosif\ObjectContainers\Traits
  */
 trait EntityMerge
 {
@@ -19,12 +18,14 @@ trait EntityMerge
      * can be used within classes which has private properties and corresponding get methods to return the data
      * this method will allow to merge subsequent objects which implements the getData method
      *
+     * @param \VighIosif\ObjectContainers\Interfaces\Entity $entity
+     *
      * @return EntityMerge
      */
-    public function merge(\vighiosif\ObjectContainers\Interfaces\DataModel\Entity $entity)
+    public function merge(\VighIosif\ObjectContainers\Interfaces\Entity $entity)
     {
         $data = $entity->getData();
-        foreach ($data AS $key => $value) {
+        foreach ($data as $key => $value) {
             if ($value && (!isset($this->mergeProtectedFields) || !in_array($key, $this->mergeProtectedFields))) {
                 $setMethod = 'set' . str_replace('_', '', $key);
                 $getMethod = 'get' . str_replace('_', '', $key);
@@ -40,5 +41,4 @@ trait EntityMerge
         }
         return $this;
     }
-
 }

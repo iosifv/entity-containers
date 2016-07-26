@@ -3,21 +3,21 @@
  * This file contains the EntityFactory trait
  */
 
-namespace vighiosif\ObjectContainers\Traits\DataModel;
+namespace VighIosif\ObjectContainers\Traits;
 
 /**
  * Class EntityFactory
  * This trait contains methods to deliver an easy way to create an entity instance with data passed as array in the
  * factory method
  *
- * @package vighiosif\ObjectContainers\Traits\DataModel
+ * @package VighIosif\ObjectContainers\Traits
  */
 trait EntityFactory
 {
-    public static function Factory(array $data = [])
+    public static function factory(array $data = [])
     {
         $instance = new static();
-        foreach ($data AS $property => $value) {
+        foreach ($data as $property => $value) {
             $method = 'set' . str_replace('_', '', $property);
             if (is_array($value)) {
                 $arrayMethod = $method . 'AsArray';
@@ -37,5 +37,3 @@ trait EntityFactory
         return $instance;
     }
 }
-
-?>

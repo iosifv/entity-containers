@@ -1,17 +1,16 @@
 <?php
 /**
  * This file contains the EntityGetData trait
-
  */
 
-namespace vighiosif\ObjectContainers\Traits\DataModel;
+namespace VighIosif\ObjectContainers\Traits;
 
 /**
  * Class EntityMerge
  * This trait contains a method to merge two objects which have methods to deliver an easy way to return key/value
  * arrays from objects with private properties and corresponding get-methods
  *
- * @package vighiosif\ObjectContainers\Traits\DataModel
+ * @package VighIosif\ObjectContainers\Traits
  */
 trait EntityMandatoryFields
 {
@@ -25,7 +24,7 @@ trait EntityMandatoryFields
      */
     public final function validateMandatoryFields($check = 'is_null')
     {
-        foreach ($this->mandatoryFields AS $field) {
+        foreach ($this->mandatoryFields as $field) {
             if ($check($this->{"get" . $field}())) {
                 return false;
             }
@@ -43,12 +42,11 @@ trait EntityMandatoryFields
     public final function getMissingMandatoryFields($check = 'is_null')
     {
         $missingFields = [];
-        foreach ($this->mandatoryFields AS $field) {
+        foreach ($this->mandatoryFields as $field) {
             if ($check($this->{"get" . $field}())) {
                 $missingFields[] = $field;
             }
         }
         return implode(', ', $missingFields);
     }
-
 }

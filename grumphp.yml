@@ -28,13 +28,13 @@ parameters:
         # MySource - very restrictive, includes underscores for private
         # Squiz    - very restrictive, includes underscores for private
         # Zend     - very restrictive, includes underscores for private
-#        phpcs:
-#            standard: "PSR1,PSR2"
-#            show_warnings: false
-#            tab_width: 4
-#            ignore_patterns: []
-#            sniffs: []
-#            triggered_by: [php]
+        phpcs:
+            standard: "PSR1,PSR2"
+            show_warnings: false
+            tab_width: 4
+            ignore_patterns: []
+            sniffs: []
+            triggered_by: [php]
         # not working quite well. Should automatically fix some small issues found by phpcs
 #         phpcsfixer:
 #            level: "psr2"

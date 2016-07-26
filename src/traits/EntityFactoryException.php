@@ -1,9 +1,6 @@
 <?php
-/**
- *
- */
 
-namespace vighiosif\ObjectContainers\Traits\DataModel;
+namespace VighIosif\ObjectContainers\Traits;
 
 class EntityFactoryException extends \Exception
 {
