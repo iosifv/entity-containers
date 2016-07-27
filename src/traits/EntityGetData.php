@@ -15,7 +15,7 @@ namespace VighIosif\ObjectContainers\Traits;
 trait EntityGetData
 {
     /**
-     * can be used within classes which has private properties and corresponding get methods to return the data
+     * Can be used within classes which has private properties and corresponding get methods to return the data
      * this method will allow to get a whole array with all corresponding properties and values back
      *
      * @param bool $addNullValues

@@ -3,7 +3,7 @@
 
 namespace VighIosif\ObjectContainers\Abstracts;
 
-use VighIosif\ObjectContainers\Interfaces\Entity;
+use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 
 abstract class EntityContainer implements \IteratorAggregate, \Countable
 {

@@ -25,6 +25,7 @@ trait EntityMandatoryFields
     public final function validateMandatoryFields($check = 'is_null')
     {
         foreach ($this->mandatoryFields as $field) {
+            // Todo: add more options here, than just isnull
             if ($check($this->{"get" . $field}())) {
                 return false;
             }

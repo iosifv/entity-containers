@@ -5,6 +5,8 @@
 
 namespace VighIosif\ObjectContainers\Traits;
 
+use VighIosif\ObjectContainers\Interfaces\EntityInterface;
+
 /**
  * Class EntityMerge
  * This trait contains a method to merge two objects which have methods to deliver an easy way to return key/value
@@ -18,11 +20,11 @@ trait EntityMerge
      * can be used within classes which has private properties and corresponding get methods to return the data
      * this method will allow to merge subsequent objects which implements the getData method
      *
-     * @param \VighIosif\ObjectContainers\Interfaces\Entity $entity
+     * @param EntityInterface $entity
      *
      * @return EntityMerge
      */
-    public function merge(\VighIosif\ObjectContainers\Interfaces\Entity $entity)
+    public function merge(EntityInterface $entity)
     {
         $data = $entity->getData();
         foreach ($data as $key => $value) {
