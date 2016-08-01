@@ -1,7 +1,4 @@
 <?php
-/**
- * This file contains the EntityGetData trait
- */
 
 namespace VighIosif\ObjectContainers\Traits;
 
@@ -16,7 +13,7 @@ trait EntityGetData
 {
     /**
      * Can be used within classes which has private properties and corresponding get methods to return the data
-     * this method will allow to get a whole array with all corresponding properties and values back
+     * This method will allow to get a whole array with all corresponding properties and values back
      *
      * @param bool $addNullValues
      *
@@ -24,17 +21,36 @@ trait EntityGetData
      */
     public function getData($addNullValues = true)
     {
-        $result  = [];
+        $result = [];
+        // Create a list with all methods in the class which start with 'get'
         $methods = $this->getClassPropertiesWithPrefixedMethods('get');
+        // Walk through all methods
         foreach ($methods as $property => $method) {
             if (method_exists($this, $method)) {
+                // If the method exists, we save it's value
                 $value = $this->{$method}();
+                // If the value is null, there's the option to ignore that
                 if (!$addNullValues && is_null($value)) {
                     continue;
                 }
+                /**
+                 * The value can be in 3 categories
+                 * 1. SCALAR (integer, float, string, boolean)
+                 *      - Just assign the value
+                 * 2. ARRAY
+                 *      - Just assign the array
+                 * 3. OBJECT
+                 *      - This obviously works only if the object has the getData() method
+                 * 4. NULL
+                 *      - null value is saved only if permitted by the method parameter
+                 */
                 if (is_scalar($value) || is_array($value)) {
                     $result[$property] = $value;
                 } elseif (is_object($value)) {
+                    if (!method_exists($value, 'getData')) {
+                        // Todo: throw a nice exception
+                        // throw new \Exception('getData not found');
+                    }
                     $result[$property] = $value->getData($addNullValues);
                 } elseif ($addNullValues) {
                     $result[$property] = null;
@@ -45,7 +61,7 @@ trait EntityGetData
     }
 
     /**
-     * returns a list of methods based on class properties which have the corresponding given prefixed method
+     * Returns a list of methods based on class properties which have the corresponding given prefixed method
      *
      * @param string $prefix
      *
@@ -53,13 +69,15 @@ trait EntityGetData
      */
     public final function getClassPropertiesWithPrefixedMethods($prefix = 'get')
     {
-        $list = [];
-        foreach (array_keys(get_object_vars($this)) as $property) {
+        $methodList = [];
+        $objectVars = array_keys(get_object_vars($this));
+        foreach ($objectVars as $property) {
             $method = $prefix . str_replace('_', '', $property);
+            // Only add the property to the result list if the corresponding method exists
             if (method_exists($this, $method)) {
-                $list[$property] = $method;
+                $methodList[$property] = $method;
             }
         }
-        return $list;
+        return $methodList;
     }
 }

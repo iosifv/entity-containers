@@ -5,6 +5,8 @@
 
 namespace VighIosif\ObjectContainers\Traits;
 
+use VighIosif\ObjectContainers\Exceptions\EntityFactoryException;
+
 /**
  * Class EntityFactory
  * This trait contains methods to deliver an easy way to create an entity instance with data passed as array in the
@@ -38,13 +40,19 @@ trait EntityFactory
                     $instance->{$arrayMethod}($value);
                     continue;
                 } else {
-                    // @ToDo: throw exception?
+                    throw new EntityFactoryException(
+                        'Created instance has missing array method: ' . $arrayMethod,
+                        EntityFactoryException::MISSING_ARRAY_METHOD_IN_OBJECT
+                    );
                 }
             }
             if (method_exists($instance, $method)) {
                 $instance->{$method}($value);
             } else {
-                // @ToDo: throw exception?
+                throw new EntityFactoryException(
+                    'Created instance has missing method: ' . $method,
+                    EntityFactoryException::MISSING_METHOD_IN_OBJECT
+                );
             }
         }
 
@@ -52,8 +60,10 @@ trait EntityFactory
         if (method_exists($instance, 'validateMandatoryFields') &&
             $instance->validateMandatoryFields() !== true
         ) {
-            $message = 'Created instance has missing mandatory fields: ' . $instance->getMissingMandatoryFields();
-            throw new EntityFactoryException($message, EntityFactoryException::MISSING_FIELDS_IN_INSTANCE);
+            throw new EntityFactoryException(
+                'Created instance has missing mandatory fields: ' . $instance->getMissingMandatoryFields(),
+                EntityFactoryException::MISSING_FIELDS_IN_INSTANCE
+            );
         }
         return $instance;
     }

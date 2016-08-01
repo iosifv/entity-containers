@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Abstracts;
+namespace VighIosif\ObjectContainers\Exceptions;
 
 class EntityContainerException extends \Exception
 {
