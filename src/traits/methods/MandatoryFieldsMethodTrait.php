@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits;
+namespace VighIosif\ObjectContainers\Traits\Methods;
 
 /**
  * This trait deals with the mandatory fields.
@@ -9,7 +9,7 @@ namespace VighIosif\ObjectContainers\Traits;
  *
  * @package VighIosif\ObjectContainers\Traits
  */
-trait EntityMandatoryFields
+trait MandatoryFieldsMethodTrait
 {
     /**
      * This method will validate all mandatory fields.

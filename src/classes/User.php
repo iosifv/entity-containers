@@ -3,11 +3,11 @@
 namespace VighIosif\ObjectContainers\Classes;
 
 use VighIosif\ObjectContainers\Interfaces\EntityInterface;
-use VighIosif\ObjectContainers\Traits\EntityGetData;
+use VighIosif\ObjectContainers\Traits\Methods\GetDataMethodTrait;
 
 class User implements EntityInterface
 {
-    use EntityGetData;
+    use GetDataMethodTrait;
     
     public function getUniqueIdentifier()
     {

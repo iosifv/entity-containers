@@ -3,9 +3,10 @@
  * This file contains the EntityFactory trait
  */
 
-namespace VighIosif\ObjectContainers\Traits;
+namespace VighIosif\ObjectContainers\Traits\Methods;
 
 use VighIosif\ObjectContainers\Exceptions\EntityFactoryException;
+use VighIosif\ObjectContainers\Exceptions\MethodException;
 
 /**
  * Class EntityFactory
@@ -14,7 +15,7 @@ use VighIosif\ObjectContainers\Exceptions\EntityFactoryException;
  *
  * @package VighIosif\ObjectContainers\Traits
  */
-trait EntityFactory
+trait FactoryMethodTrait
 {
     /**
      * Returns an object created from the properly formatted array.
@@ -22,7 +23,7 @@ trait EntityFactory
      * @param array $data
      *
      * @return static
-     * @throws EntityFactoryException
+     * @throws MethodException
      */
     public static function factory(array $data = [])
     {
@@ -40,18 +41,18 @@ trait EntityFactory
                     $instance->{$arrayMethod}($value);
                     continue;
                 } else {
-                    throw new EntityFactoryException(
+                    throw new MethodException(
                         'Created instance has missing array method: ' . $arrayMethod,
-                        EntityFactoryException::MISSING_ARRAY_METHOD_IN_OBJECT
+                        MethodException::MISSING_ARRAY_METHOD_IN_OBJECT
                     );
                 }
             }
             if (method_exists($instance, $method)) {
                 $instance->{$method}($value);
             } else {
-                throw new EntityFactoryException(
+                throw new MethodException(
                     'Created instance has missing method: ' . $method,
-                    EntityFactoryException::MISSING_METHOD_IN_OBJECT
+                    MethodException::MISSING_METHOD_IN_OBJECT
                 );
             }
         }
@@ -60,9 +61,9 @@ trait EntityFactory
         if (method_exists($instance, 'validateMandatoryFields') &&
             $instance->validateMandatoryFields() !== true
         ) {
-            throw new EntityFactoryException(
+            throw new MethodException(
                 'Created instance has missing mandatory fields: ' . $instance->getMissingMandatoryFields(),
-                EntityFactoryException::MISSING_FIELDS_IN_INSTANCE
+                MethodException::MISSING_FIELDS_IN_INSTANCE
             );
         }
         return $instance;

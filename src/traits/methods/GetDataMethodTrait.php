@@ -1,6 +1,8 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits;
+namespace VighIosif\ObjectContainers\Traits\Methods;
+
+use VighIosif\ObjectContainers\Exceptions\MethodException;
 
 /**
  * Class EntityGetData
@@ -9,7 +11,7 @@ namespace VighIosif\ObjectContainers\Traits;
  *
  * @package VighIosif\ObjectContainers\Traits
  */
-trait EntityGetData
+trait GetDataMethodTrait
 {
     /**
      * Can be used within classes which has private properties and corresponding get methods to return the data
@@ -18,6 +20,7 @@ trait EntityGetData
      * @param bool $addNullValues
      *
      * @return array
+     * @throws MethodException
      */
     public function getData($addNullValues = true)
     {
@@ -48,8 +51,10 @@ trait EntityGetData
                     $result[$property] = $value;
                 } elseif (is_object($value)) {
                     if (!method_exists($value, 'getData')) {
-                        // Todo: throw a nice exception
-                        // throw new \Exception('getData not found');
+                        throw new MethodException(
+                            'getData not found',
+                            MethodException::MISSING_GET_DATA_FUNCTION
+                        );
                     }
                     $result[$property] = $value->getData($addNullValues);
                 } elseif ($addNullValues) {

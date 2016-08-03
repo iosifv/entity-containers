@@ -1,28 +1,7 @@
 <?php
-/**
- * Exception class
- *
- * @category  Exceptions
- * @package   Iqu\ContactApiClient
- * @author    Iosif Vigh <iosif.vigh@iqu.com>
- * @copyright 2016 iQU. All rights reserved.
- * @license   https://composer.iqugroup.com/license Proprietary and private
- * @link      http://www.iqu.com iQU Homepage
- */
 
-namespace Iqu\ContactApiClient\Entity\Exceptions;
+namespace VighIosif\ObjectContainers\Exceptions;
 
-/**
- * Class BaseException.
- * This has the Factory methods needed to create customized exceptions.
- * All other exceptions in this package must extend this class.
- *
- * @category Exceptions
- * @package  Iqu\ContactApiClient
- * @author   Iosif Vigh <iosif.vigh@iqu.com>
- * @license  https://composer.iqugroup.com/license Proprietary and private
- * @link     http://www.iqu.com iQU Homepage
- */
 class BaseException extends \Exception
 {
     const INVALID_VALUE_EXCEPTION             = 1;
@@ -120,20 +99,6 @@ class BaseException extends \Exception
         $exception = new static(
             self::messageForInvalidValue($value, $fieldName, $requirements),
             self::INVALID_VALUE_EXCEPTION
-        );
-        return $exception;
-    }
-
-    /**
-     * Creates one Exception object and sets the appropriate Code and Message
-     *
-     * @return static
-     */
-    public static function factoryIncompleteIdentifier()
-    {
-        $exception = new static(
-            'The entity does not have any fields set, thus can not be uniquely identified.',
-            self::INVALID_UNIQUE_IDENTIFIER_EXCEPTION
         );
         return $exception;
     }

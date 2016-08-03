@@ -1,29 +1,7 @@
 <?php
-/**
- * Trait class
- *
- * @category  Traits
- * @package   Iqu\ContactApiClient
- * @author    Iosif Vigh <iosif.vigh@iqu.com>
- * @copyright 2016 iQU. All rights reserved.
- * @license   https://composer.iqugroup.com/license Proprietary and private
- * @link      http://www.iqu.com iQU Homepage
- */
 
+namespace VighIosif\ObjectContainers\Traits;
 
-namespace Iqu\ContactApiClient\Entity\Traits;
-
-use Iqu\ContactApiClient\Entity\Exceptions\BaseException;
-
-/**
- * Class PropertyIdTrait
- *
- * @category Traits
- * @package  Iqu\ContactApiClient\Entity\Traits
- * @author   Iosif Vigh <iosif.vigh@iqu.com>
- * @license  https://composer.iqugroup.com/license Proprietary and private
- * @link     http://www.iqu.com iQU Homepage
- */
 trait PropertyIdTrait
 {
     /**
