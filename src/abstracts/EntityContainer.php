@@ -7,6 +7,7 @@ use ArrayIterator;
 use Countable;
 use IteratorAggregate;
 use VighIosif\ObjectContainers\Exceptions\EntityContainerException;
+use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
 use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 
 abstract class EntityContainer implements IteratorAggregate, Countable
@@ -47,8 +48,8 @@ abstract class EntityContainer implements IteratorAggregate, Countable
             } else {
                 // Something fishy is happening if we got here!
                 throw new EntityContainerException(
-                    'Invalid entity value',
-                    EntityContainerException::INVALID_ENTITY_VALUE
+                    ExceptionConstants::INVALID_ENTITY_FORMAT,
+                    ExceptionConstants::INVALID_ENTITY_FORMAT_CODE
                 );
             }
         }
@@ -137,7 +138,7 @@ abstract class EntityContainer implements IteratorAggregate, Countable
                 $this->add($currentEntity);
             } else {
                 $currentEntity = $this->get($currentEntity->getUniqueIdentifier())->merge($currentEntity);
-                $this->deleteFromEntity($currentEntity);
+                $this->deleteByEntity($currentEntity);
                 $this->add($currentEntity);
             }
         }
@@ -197,9 +198,9 @@ abstract class EntityContainer implements IteratorAggregate, Countable
      *
      * @return $this
      */
-    public function deleteFromEntity(EntityInterface $entity)
+    public function deleteByEntity(EntityInterface $entity)
     {
-        return $this->deleteFromIdentifier(
+        return $this->deleteByIdentifier(
             $entity->getUniqueIdentifier()
         );
     }
@@ -211,7 +212,7 @@ abstract class EntityContainer implements IteratorAggregate, Countable
      *
      * @return $this
      */
-    public function deleteFromIdentifier($identifier)
+    public function deleteByIdentifier($identifier)
     {
         unset($this->list[$identifier]);
         return $this;

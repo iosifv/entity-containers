@@ -1,8 +1,10 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits;
+namespace VighIosif\ObjectContainers\Traits\Properties;
 
 use DateTime;
+use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
+use VighIosif\ObjectContainers\Exceptions\PropertyException;
 
 trait PropertyCreatedAndDeletedTrait
 {
@@ -53,7 +55,7 @@ trait PropertyCreatedAndDeletedTrait
      * @param String $createdString Value to be set
      *
      * @return $this
-     * @throws BaseException
+     * @throws PropertyException
      */
     public function setCreated($createdString)
     {
@@ -90,7 +92,7 @@ trait PropertyCreatedAndDeletedTrait
      * @param String $deletedString Value to be set
      *
      * @return $this
-     * @throws BaseException
+     * @throws PropertyException
      */
     public function setDeleted($deletedString)
     {
@@ -158,19 +160,23 @@ trait PropertyCreatedAndDeletedTrait
      * @param String $format         date format
      *
      * @return null
-     * @throws BaseException
+     * @throws PropertyException
      */
     private function validateDatetimeString($datetimeString, $format)
     {
         $datetimeObject = DateTime::createFromFormat($format, $datetimeString);
         if ($datetimeObject === false || $datetimeObject->format($format) !== $datetimeString) {
-            $exceptionClassName = self::EXCEPTION_CLASS;
-            /**
-             * Will be some class extended from this BaseException, but this is good enough for code linting
-             *
-             * @var BaseException $exceptionClassName
-             */
-            throw $exceptionClassName::factoryInvalidValue($datetimeString, 'created|deleted', 'format: ' . $format);
+            // $exceptionClassName = self::EXCEPTION_CLASS;
+            // /**
+            //  * Will be some class extended from this BaseException, but this is good enough for code linting
+            //  *
+            //  * @var BaseException $exceptionClassName
+            //  */
+            // throw $exceptionClassName::factoryInvalidValue($datetimeString, 'created|deleted', 'format: ' . $format);
+            throw new PropertyException(
+                ExceptionConstants::INVALID_ID_MESSAGE,
+                ExceptionConstants::INVALID_DATE_MESSAGE
+            );
         }
     }
 }

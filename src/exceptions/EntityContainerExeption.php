@@ -2,6 +2,6 @@
 
 namespace VighIosif\ObjectContainers\Exceptions;
 
-class MethodException extends BaseException
+class EntityContainerException extends BaseException
 {
 }

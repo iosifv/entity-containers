@@ -2,6 +2,7 @@
 
 namespace VighIosif\ObjectContainers\Traits\Methods;
 
+use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
 use VighIosif\ObjectContainers\Exceptions\MethodException;
 
 /**
@@ -52,8 +53,8 @@ trait GetDataMethodTrait
                 } elseif (is_object($value)) {
                     if (!method_exists($value, 'getData')) {
                         throw new MethodException(
-                            'getData not found',
-                            MethodException::MISSING_GET_DATA_FUNCTION
+                            ExceptionConstants::GET_DATA_METHOD_MISSING_MESSAGE,
+                            ExceptionConstants::MISSING_METHOD_GET_DATA_CODE
                         );
                     }
                     $result[$property] = $value->getData($addNullValues);

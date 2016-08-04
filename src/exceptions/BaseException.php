@@ -4,7 +4,7 @@ namespace VighIosif\ObjectContainers\Exceptions;
 
 class BaseException extends \Exception
 {
-    const INVALID_VALUE_EXCEPTION             = 1;
+    const INVALID_VALUE_CODE                  = 1;
     const INVALID_TYPE_ID_EXCEPTION           = 2;
     const INVALID_UNIQUE_IDENTIFIER_EXCEPTION = 3;
 
@@ -71,7 +71,7 @@ class BaseException extends \Exception
     {
         $exception = new static(
             self::messageForInvalidValue($value, $fieldName, $requirements),
-            self::INVALID_VALUE_EXCEPTION
+            self::INVALID_VALUE_CODE
         );
         return $exception;
     }
@@ -98,7 +98,7 @@ class BaseException extends \Exception
         }
         $exception = new static(
             self::messageForInvalidValue($value, $fieldName, $requirements),
-            self::INVALID_VALUE_EXCEPTION
+            self::INVALID_VALUE_CODE
         );
         return $exception;
     }

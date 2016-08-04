@@ -5,8 +5,9 @@
 
 namespace VighIosif\ObjectContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Exceptions\EntityFactoryException;
+use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
 use VighIosif\ObjectContainers\Exceptions\MethodException;
+use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 
 /**
  * Class EntityFactory
@@ -29,6 +30,7 @@ trait FactoryMethodTrait
     {
         // This will create a new instance of the object from which this trait-function was called:
         // For the following code UserEntity::factory() starts by creating an UserEntity object
+        /** @var EntityInterface $instance */
         $instance = new static();
         foreach ($data as $property => $value) {
             // the method for setting a value must start with 'set'
@@ -43,7 +45,7 @@ trait FactoryMethodTrait
                 } else {
                     throw new MethodException(
                         'Created instance has missing array method: ' . $arrayMethod,
-                        MethodException::MISSING_ARRAY_METHOD_IN_OBJECT
+                        ExceptionConstants::MISSING_ARRAY_METHOD_IN_OBJECT_CODE
                     );
                 }
             }
@@ -52,7 +54,7 @@ trait FactoryMethodTrait
             } else {
                 throw new MethodException(
                     'Created instance has missing method: ' . $method,
-                    MethodException::MISSING_METHOD_IN_OBJECT
+                    ExceptionConstants::MISSING_METHOD_IN_OBJECT_CODE
                 );
             }
         }
@@ -63,7 +65,7 @@ trait FactoryMethodTrait
         ) {
             throw new MethodException(
                 'Created instance has missing mandatory fields: ' . $instance->getMissingMandatoryFields(),
-                MethodException::MISSING_FIELDS_IN_INSTANCE
+                ExceptionConstants::MISSING_FIELDS_IN_INSTANCE_CODE
             );
         }
         return $instance;

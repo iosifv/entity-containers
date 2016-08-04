@@ -2,6 +2,7 @@
 
 namespace VighIosif\ObjectContainers\Traits\Methods;
 
+use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
 use VighIosif\ObjectContainers\Exceptions\MethodException;
 
 trait UniqueIdentifierMethodTrait
@@ -15,6 +16,7 @@ trait UniqueIdentifierMethodTrait
     public function getUniqueIdentifier()
     {
         $unique = '';
+        // Todo: getDbColumn() does not exist. Maybe switch to using mandatory fields?
         $fields = $this->getDbColumns();
         foreach ($fields as $field) {
             $str = ucwords(str_replace('_', '', $field));
@@ -23,7 +25,7 @@ trait UniqueIdentifierMethodTrait
         if ('' === $unique) {
             throw new MethodException(
                 'The entity does not have any fields set, thus can not be uniquely identified.',
-                MethodException::INVALID_UNIQUE_IDENTIFIER
+                ExceptionConstants::INVALID_UNIQUE_IDENTIFIER_CODE
             );
         }
         return md5($unique);
