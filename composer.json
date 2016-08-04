@@ -29,6 +29,8 @@
       "VighIosif\\ObjectContainers\\Exceptions\\": "src/exceptions/",
       "VighIosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
       "VighIosif\\ObjectContainers\\Traits\\": "src/traits/",
+      "VighIosif\\ObjectContainers\\Traits\\Methods\\": "src/traits/methods/",
+      "VighIosif\\ObjectContainers\\Traits\\Properties\\": "src/traits/properties/",
       "VighIosif\\ObjectContainers\\Tests\\": "tests/"
     }
   }

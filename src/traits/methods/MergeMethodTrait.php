@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits;
+namespace VighIosif\ObjectContainers\Traits\Methods;
 
 use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 
@@ -11,7 +11,7 @@ use VighIosif\ObjectContainers\Interfaces\EntityInterface;
  *
  * @package VighIosif\ObjectContainers\Traits
  */
-trait EntityMerge
+trait MergeMethodTrait
 {
     /**
      * Can be used within classes which have private properties and corresponding get methods to return the data
@@ -19,7 +19,7 @@ trait EntityMerge
      *
      * @param EntityInterface $entity
      *
-     * @return EntityMerge
+     * @return MergeMethodTrait
      */
     public function merge(EntityInterface $entity)
     {

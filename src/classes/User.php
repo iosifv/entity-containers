@@ -3,21 +3,57 @@
 namespace VighIosif\ObjectContainers\Classes;
 
 use VighIosif\ObjectContainers\Interfaces\EntityInterface;
-use VighIosif\ObjectContainers\Traits\EntityGetData;
+use VighIosif\ObjectContainers\Traits\Methods\FactoryMethodTrait;
+use VighIosif\ObjectContainers\Traits\Methods\GetDataMethodTrait;
+use VighIosif\ObjectContainers\Traits\Methods\UniqueIdentifierMethodTrait;
+use VighIosif\ObjectContainers\Traits\Properties\PropertyIdTrait;
 
 class User implements EntityInterface
 {
-    use EntityGetData;
-    
-    public function getUniqueIdentifier()
-    {
-        // TODO: Implement getUniqueIdentifier() method.
-    }
-    
+    use FactoryMethodTrait;
+    use GetDataMethodTrait;
+    use UniqueIdentifierMethodTrait;
+
+    use PropertyIdTrait;
+
     private $name;
-    
-    public function __construct()
+    private $password;
+
+    /**
+     * @return mixed
+     */
+    public function getName()
     {
-        $this->name = 'gugu';
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $name
+     *
+     * @return User
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $password
+     *
+     * @return User
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
+        return $this;
     }
 }
