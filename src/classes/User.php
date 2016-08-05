@@ -6,7 +6,9 @@ use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 use VighIosif\ObjectContainers\Traits\Methods\FactoryMethodTrait;
 use VighIosif\ObjectContainers\Traits\Methods\GetDataMethodTrait;
 use VighIosif\ObjectContainers\Traits\Methods\UniqueIdentifierMethodTrait;
+use VighIosif\ObjectContainers\Traits\Properties\PrivatePropertyAccessTrait;
 use VighIosif\ObjectContainers\Traits\Properties\PropertyIdTrait;
+use VighIosif\ObjectContainers\Traits\Properties\PropertyProtectionTrait;
 
 class User implements EntityInterface
 {
@@ -15,45 +17,47 @@ class User implements EntityInterface
     use UniqueIdentifierMethodTrait;
 
     use PropertyIdTrait;
+    use PropertyProtectionTrait;
+    use PrivatePropertyAccessTrait;
 
-    private $name;
-    private $password;
+    private $firstName;
+    private $lastName;
 
     /**
      * @return mixed
      */
-    public function getName()
+    public function getFirstName()
     {
-        return $this->name;
+        return $this->firstName;
     }
 
     /**
-     * @param mixed $name
+     * @param mixed $firstName
      *
      * @return User
      */
-    public function setName($name)
+    public function setFirstName($firstName)
     {
-        $this->name = $name;
+        $this->firstName = $firstName;
         return $this;
     }
 
     /**
      * @return mixed
      */
-    public function getPassword()
+    public function getLastName()
     {
-        return $this->password;
+        return $this->lastName;
     }
 
     /**
-     * @param mixed $password
+     * @param mixed $lastName
      *
      * @return User
      */
-    public function setPassword($password)
+    public function setLastName($lastName)
     {
-        $this->password = $password;
+        $this->lastName = $lastName;
         return $this;
     }
 }

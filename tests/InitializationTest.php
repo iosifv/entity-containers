@@ -19,11 +19,11 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
     public function testFactoryConsistency()
     {
         $user = new User();
-        $user->setName('john')->setPassword('123');
+        $user->setFirstName('John')->setLastName('Doe');
 
         $userCopy = User::factory([
-            'name'     => 'john',
-            'password' => '123',
+            'firstName' => 'John',
+            'lastName'  => 'Doe',
         ]);
 
         // Test the factory method
@@ -68,5 +68,47 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
         );
 
         // Todo:Test Class origin - the exception should know it originated in class User
+    }
+
+    /**
+     * 1. Test if exception is thrown if trying to access a non-existing property
+     * 2. Test if exception is thrown if trying to access a private property
+     * 3. Try to directly access a private property if access is allowed
+     */
+    public function testMagicSettersAndGetters()
+    {
+        $user                         = new User();
+        $propertyNotExistingException = null;
+        try {
+            $user->inexistentProperty = 'Blah';
+        } catch (\Exception $e) {
+            $propertyNotExistingException = $e;
+        }
+
+        $propertyPrivateException = null;
+        try {
+            $user->firstName = 'John';
+        } catch (\Exception $e) {
+            $propertyPrivateException = $e;
+        }
+
+        $user = new User();
+        $user->setAccessToPrivateProperties(true);
+        $user->firstName = 'John';
+        $user->lastName  = 'Doe';
+        $userCompare     = new User();
+        $userCompare->setAccessToPrivateProperties(true)
+            ->setFirstName('John')
+            ->setLastName('Doe');
+
+        $this->assertEquals(
+            $propertyNotExistingException->getMessage(),
+            ExceptionConstants::PROPERTY_DOES_NOT_EXIST . 'inexistentProperty'
+        );
+        $this->assertEquals(
+            $propertyPrivateException->getMessage(),
+            ExceptionConstants::PROPERTY_EXISTS_BUT_IS_PRIVATE . 'firstName'
+        );
+        $this->assertEquals($user, $userCompare);
     }
 }
