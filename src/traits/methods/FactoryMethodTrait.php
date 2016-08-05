@@ -34,7 +34,7 @@ trait FactoryMethodTrait
         $instance = new static();
         foreach ($data as $property => $value) {
             // the method for setting a value must start with 'set'
-            $method = 'set' . str_replace('_', '', $property);
+            $method = 'set' . str_replace('_', '', ucfirst($property));
             // If the value is an array then a special method must be implemented
             // which starts with 'set' and ends with 'AsArray'. Example: setListAsArray()
             if (is_array($value)) {

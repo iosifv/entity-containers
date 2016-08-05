@@ -15,13 +15,20 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
         parent::__construct();
     }
 
-
+    /**
+     * Test the consistency of the factory() and getData() methods
+     *
+     * @throws \VighIosif\ObjectContainers\Exceptions\MethodException
+     */
     public function testFactoryConsistency()
     {
         $user = new User();
-        $user->setFirstName('John')->setLastName('Doe');
+        $user->setId(5)
+            ->setFirstName('John')
+            ->setLastName('Doe');
 
-        $userCopy = User::factory([
+        $userCompare = User::factory([
+            'id'        => 5,
             'firstName' => 'John',
             'lastName'  => 'Doe',
         ]);
@@ -29,16 +36,25 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
         // Test the factory method
         $this->assertEquals(
             $user,
-            $userCopy
+            $userCompare
         );
 
         // Test the getData output
         $this->assertEquals(
             $user->getData(),
-            $userCopy->getData()
+            $userCompare->getData()
+        );
+
+        // Test to show the main feature of this library :)
+        $this->assertEquals(
+            $user,
+            User::factory($user->getData())
         );
     }
 
+    /**
+     * Test all possible exceptions that can be thrown by setter methods
+     */
     public function testSetterExceptions()
     {
         $caughtException = null;
@@ -93,11 +109,11 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
         }
 
         $user = new User();
-        $user->setAccessToPrivateProperties(true);
+        $user->setAccessPrivateProperties(true);
         $user->firstName = 'John';
         $user->lastName  = 'Doe';
         $userCompare     = new User();
-        $userCompare->setAccessToPrivateProperties(true)
+        $userCompare->setAccessPrivateProperties(true)
             ->setFirstName('John')
             ->setLastName('Doe');
 

@@ -6,6 +6,7 @@ use VighIosif\ObjectContainers\Interfaces\EntityInterface;
 use VighIosif\ObjectContainers\Traits\Methods\FactoryMethodTrait;
 use VighIosif\ObjectContainers\Traits\Methods\GetDataMethodTrait;
 use VighIosif\ObjectContainers\Traits\Methods\UniqueIdentifierMethodTrait;
+use VighIosif\ObjectContainers\Traits\Properties\PropertyCreatedAndDeletedTrait;
 use VighIosif\ObjectContainers\Traits\Properties\PropertyIdTrait;
 
 class Account implements EntityInterface
@@ -15,17 +16,37 @@ class Account implements EntityInterface
     use UniqueIdentifierMethodTrait;
 
     use PropertyIdTrait;
+    use PropertyCreatedAndDeletedTrait;
 
     const TYPE_SUPER_ADMIN = 1;
     const TYPE_ADMIN       = 2;
     const TYPE_USER        = 3;
 
-    private $username;
-    private $password;
-    private $type;
-    
     /**
-     * @return mixed
+     * @var String
+     */
+    private $username;
+    /**
+     * @var String
+     */
+    private $password;
+    /**
+     * @var integer
+     */
+    private $type;
+
+
+    public function getUserTypes()
+    {
+        return [
+            1 => self::TYPE_SUPER_ADMIN,
+            2 => self::TYPE_ADMIN,
+            3 => self::TYPE_USER,
+        ];
+    }
+
+    /**
+     * @return String
      */
     public function getUsername()
     {
@@ -33,7 +54,7 @@ class Account implements EntityInterface
     }
 
     /**
-     * @param mixed $username
+     * @param String $username
      *
      * @return Account
      */
@@ -44,7 +65,7 @@ class Account implements EntityInterface
     }
 
     /**
-     * @return mixed
+     * @return String
      */
     public function getPassword()
     {
@@ -52,7 +73,7 @@ class Account implements EntityInterface
     }
 
     /**
-     * @param mixed $password
+     * @param String $password
      *
      * @return Account
      */
@@ -63,7 +84,7 @@ class Account implements EntityInterface
     }
 
     /**
-     * @return mixed
+     * @return int
      */
     public function getType()
     {
@@ -71,12 +92,17 @@ class Account implements EntityInterface
     }
 
     /**
-     * @param mixed $type
+     * @param int $type
      *
      * @return Account
+     * @throws \Exception
      */
     public function setType($type)
     {
+        if (!in_array($type, $this->getUserTypes())) {
+            // Todo: make exception class for this
+            throw new \Exception('Invalid user type: ' . $type);
+        }
         $this->type = $type;
         return $this;
     }

@@ -19,31 +19,31 @@ trait PrivatePropertyAccessTrait
      *
      * @var bool
      */
-    private $allowAccessToPrivateProperties = false;
+    private $accessPrivateProperties = false;
 
     /**
      * @return boolean
      */
-    public function getAllowAccessToPrivateProperties()
+    public function getAccessPrivateProperties()
     {
-        return $this->allowAccessToPrivateProperties;
+        return $this->accessPrivateProperties;
     }
 
     /**
-     * @param $allowAccessToPrivateProperties
+     * @param $accessPrivateProperties
      *
      * @return PrivatePropertyAccessTrait
      * @throws PropertyException
      */
-    public function setAccessToPrivateProperties($allowAccessToPrivateProperties)
+    public function setAccessPrivateProperties($accessPrivateProperties)
     {
-        if (!is_bool($allowAccessToPrivateProperties)) {
+        if (!is_bool($accessPrivateProperties)) {
             throw new PropertyException(
                 ExceptionConstants::INVALID_BOOLEAN_MESSAGE,
                 ExceptionConstants::INVALID_VALUE_CODE
             );
         }
-        $this->allowAccessToPrivateProperties = $allowAccessToPrivateProperties;
+        $this->accessPrivateProperties = $accessPrivateProperties;
         return $this;
     }
 }

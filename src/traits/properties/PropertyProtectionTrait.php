@@ -7,7 +7,7 @@ use VighIosif\ObjectContainers\Exceptions\PropertyException;
 
 /**
  * Provides a small workaround if you are too lazy to write your setters and getters
- * Just set a private property called "allowAccessToPrivateProperties" to true in your class to have this.
+ * Just set a private property called "accessPrivateProperties" to true in your class to have this.
  * Class PropertyProtectionTrait
  *
  * @package VighIosif\ObjectContainers\Traits\Properties
@@ -23,8 +23,8 @@ trait PropertyProtectionTrait
     public function __get($property)
     {
         if (property_exists($this, $property) &&
-            isset($this->allowAccessToPrivateProperties) &&
-            true === $this->allowAccessToPrivateProperties
+            isset($this->accessPrivateProperties) &&
+            true === $this->accessPrivateProperties
         ) {
             return $this->$property;
         }
@@ -52,8 +52,8 @@ trait PropertyProtectionTrait
     public function __set($property, $value)
     {
         if (property_exists($this, $property) &&
-            isset($this->allowAccessToPrivateProperties) &&
-            true === $this->allowAccessToPrivateProperties
+            isset($this->accessPrivateProperties) &&
+            true === $this->accessPrivateProperties
         ) {
             $this->$property = $value;
             return $this;
