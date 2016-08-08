@@ -1,9 +1,9 @@
 <?php
-namespace VighIosif\ObjectContainers\Tests;
+namespace VighIosif\EntityContainers\Tests;
 
-use VighIosif\ObjectContainers\Classes\User;
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\PropertyException;
+use VighIosif\EntityContainers\Classes\User;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\PropertyException;
 
 require dirname(__FILE__) . '/../vendor/autoload.php';
 
@@ -18,7 +18,7 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
     /**
      * Test the consistency of the factory() and getData() methods
      *
-     * @throws \VighIosif\ObjectContainers\Exceptions\MethodException
+     * @throws \VighIosif\EntityContainers\Exceptions\MethodException
      */
     public function testFactoryConsistency()
     {

@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Exceptions;
+namespace VighIosif\EntityContainers\Exceptions;
 
 class PropertyException extends BaseException
 {

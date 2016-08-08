@@ -1,16 +1,16 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Properties;
+namespace VighIosif\EntityContainers\Traits\Properties;
 
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\PropertyException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\PropertyException;
 
 /**
  * Sets "allowAccessToPrivateProperties" to true so that used with trait PropertyProtectionTrait you can access
  * properties directly
  * Class PropertyProtectionTrait
  *
- * @package VighIosif\ObjectContainers\Traits\Properties
+ * @package VighIosif\EntityContainers\Traits\Properties
  */
 trait PrivatePropertyAccessTrait
 {

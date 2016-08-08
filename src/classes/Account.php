@@ -1,13 +1,13 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Classes;
+namespace VighIosif\EntityContainers\Classes;
 
-use VighIosif\ObjectContainers\Interfaces\EntityInterface;
-use VighIosif\ObjectContainers\Traits\Methods\FactoryMethodTrait;
-use VighIosif\ObjectContainers\Traits\Methods\GetDataMethodTrait;
-use VighIosif\ObjectContainers\Traits\Methods\UniqueIdentifierMethodTrait;
-use VighIosif\ObjectContainers\Traits\Properties\PropertyCreatedAndDeletedTrait;
-use VighIosif\ObjectContainers\Traits\Properties\PropertyIdTrait;
+use VighIosif\EntityContainers\Interfaces\EntityInterface;
+use VighIosif\EntityContainers\Traits\Methods\FactoryMethodTrait;
+use VighIosif\EntityContainers\Traits\Methods\GetDataMethodTrait;
+use VighIosif\EntityContainers\Traits\Methods\UniqueIdentifierMethodTrait;
+use VighIosif\EntityContainers\Traits\Properties\PropertyCreatedAndDeletedTrait;
+use VighIosif\EntityContainers\Traits\Properties\PropertyIdTrait;
 
 class Account implements EntityInterface
 {

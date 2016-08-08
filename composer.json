@@ -23,16 +23,16 @@
   },
   "autoload": {
     "psr-4": {
-      "VighIosif\\ObjectContainers\\": "src/",
-      "VighIosif\\ObjectContainers\\Abstracts\\": "src/abstracts/",
-      "VighIosif\\ObjectContainers\\Classes\\": "src/classes/",
-      "VighIosif\\ObjectContainers\\Classes\\Containers\\": "src/classes/containers/",
-      "VighIosif\\ObjectContainers\\Exceptions\\": "src/exceptions/",
-      "VighIosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
-      "VighIosif\\ObjectContainers\\Traits\\": "src/traits/",
-      "VighIosif\\ObjectContainers\\Traits\\Methods\\": "src/traits/methods/",
-      "VighIosif\\ObjectContainers\\Traits\\Properties\\": "src/traits/properties/",
-      "VighIosif\\ObjectContainers\\Tests\\": "tests/"
+      "VighIosif\\EntityContainers\\": "src/",
+      "VighIosif\\EntityContainers\\Abstracts\\": "src/abstracts/",
+      "VighIosif\\EntityContainers\\Classes\\": "src/classes/",
+      "VighIosif\\EntityContainers\\Classes\\Containers\\": "src/classes/containers/",
+      "VighIosif\\EntityContainers\\Exceptions\\": "src/exceptions/",
+      "VighIosif\\EntityContainers\\Interfaces\\": "src/interfaces/",
+      "VighIosif\\EntityContainers\\Traits\\": "src/traits/",
+      "VighIosif\\EntityContainers\\Traits\\Methods\\": "src/traits/methods/",
+      "VighIosif\\EntityContainers\\Traits\\Properties\\": "src/traits/properties/",
+      "VighIosif\\EntityContainers\\Tests\\": "tests/"
     }
   }
 }

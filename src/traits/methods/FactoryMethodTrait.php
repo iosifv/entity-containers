@@ -3,18 +3,18 @@
  * This file contains the EntityFactory trait
  */
 
-namespace VighIosif\ObjectContainers\Traits\Methods;
+namespace VighIosif\EntityContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\MethodException;
-use VighIosif\ObjectContainers\Interfaces\EntityInterface;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\MethodException;
+use VighIosif\EntityContainers\Interfaces\EntityInterface;
 
 /**
  * Class EntityFactory
  * This trait contains methods to deliver an easy way to create an entity instance with data passed as array in the
  * factory method
  *
- * @package VighIosif\ObjectContainers\Traits
+ * @package VighIosif\EntityContainers\Traits
  */
 trait FactoryMethodTrait
 {

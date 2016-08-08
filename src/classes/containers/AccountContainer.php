@@ -1,10 +1,10 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Classes\Containers;
+namespace VighIosif\EntityContainers\Classes\Containers;
 
-use VighIosif\ObjectContainers\Abstracts\EntityContainer;
+use VighIosif\EntityContainers\Abstracts\EntityContainer;
 
 class AccountContainer extends EntityContainer
 {
-    const ENTITY_CLASS = 'Vighiosif\\ObjectContainers\\Classes\\Account';
+    const ENTITY_CLASS = 'Vighiosif\\EntityContainers\\Classes\\Account';
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Methods;
+namespace VighIosif\EntityContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\MethodException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\MethodException;
 
 trait UniqueIdentifierMethodTrait
 {

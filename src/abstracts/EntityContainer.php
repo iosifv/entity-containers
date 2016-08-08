@@ -1,14 +1,14 @@
 <?php
 
 
-namespace VighIosif\ObjectContainers\Abstracts;
+namespace VighIosif\EntityContainers\Abstracts;
 
 use ArrayIterator;
 use Countable;
 use IteratorAggregate;
-use VighIosif\ObjectContainers\Exceptions\EntityContainerException;
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Interfaces\EntityInterface;
+use VighIosif\EntityContainers\Exceptions\EntityContainerException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Interfaces\EntityInterface;
 
 abstract class EntityContainer implements IteratorAggregate, Countable
 {

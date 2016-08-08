@@ -1,10 +1,10 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Properties;
+namespace VighIosif\EntityContainers\Traits\Properties;
 
 use DateTime;
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\PropertyException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\PropertyException;
 
 trait PropertyCreatedAndDeletedTrait
 {

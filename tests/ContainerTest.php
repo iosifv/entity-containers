@@ -1,8 +1,8 @@
 <?php
-namespace VighIosif\ObjectContainers\Tests;
+namespace VighIosif\EntityContainers\Tests;
 
-use VighIosif\ObjectContainers\Classes\Account;
-use VighIosif\ObjectContainers\Classes\Containers\AccountContainer;
+use VighIosif\EntityContainers\Classes\Account;
+use VighIosif\EntityContainers\Classes\Containers\AccountContainer;
 
 require dirname(__FILE__) . '/../vendor/autoload.php';
 

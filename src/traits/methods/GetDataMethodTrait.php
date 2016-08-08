@@ -1,16 +1,16 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Methods;
+namespace VighIosif\EntityContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\MethodException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\MethodException;
 
 /**
  * Class EntityGetData
  * This trait contains methods to deliver an easy way to return key/value arrays from objects with private properties
  * and corresponding get-methods
  *
- * @package VighIosif\ObjectContainers\Traits
+ * @package VighIosif\EntityContainers\Traits
  */
 trait GetDataMethodTrait
 {

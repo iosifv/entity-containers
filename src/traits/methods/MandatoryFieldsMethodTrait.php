@@ -1,15 +1,15 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Methods;
+namespace VighIosif\EntityContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Exceptions\ExceptionConstants;
-use VighIosif\ObjectContainers\Exceptions\MethodException;
+use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
+use VighIosif\EntityContainers\Exceptions\MethodException;
 
 /**
  * This trait deals with the mandatory fields.
  * Class EntityMandatoryFields
  *
- * @package VighIosif\ObjectContainers\Traits
+ * @package VighIosif\EntityContainers\Traits
  */
 trait MandatoryFieldsMethodTrait
 {

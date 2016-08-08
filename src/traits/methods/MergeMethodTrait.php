@@ -1,15 +1,15 @@
 <?php
 
-namespace VighIosif\ObjectContainers\Traits\Methods;
+namespace VighIosif\EntityContainers\Traits\Methods;
 
-use VighIosif\ObjectContainers\Interfaces\EntityInterface;
+use VighIosif\EntityContainers\Interfaces\EntityInterface;
 
 /**
  * Class EntityMerge
  * This trait contains a method to merge two objects which have methods to deliver an easy way to return key/value
  * arrays from objects with private properties and corresponding get-methods
  *
- * @package VighIosif\ObjectContainers\Traits
+ * @package VighIosif\EntityContainers\Traits
  */
 trait MergeMethodTrait
 {
