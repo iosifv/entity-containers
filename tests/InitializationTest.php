@@ -1,20 +1,14 @@
 <?php
 namespace VighIosif\EntityContainers\Tests;
 
-use VighIosif\EntityContainers\SampleEntity\UserEntity;
 use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
 use VighIosif\EntityContainers\Exceptions\PropertyException;
+use VighIosif\EntityContainers\SampleEntity\UserEntity;
 
 require dirname(__FILE__) . '/../vendor/autoload.php';
 
 class InitializationTest extends \PHPUnit_Framework_TestCase
 {
-    public function __construct()
-    {
-        date_default_timezone_set('Europe/Amsterdam');
-        parent::__construct();
-    }
-
     /**
      * Test the consistency of the factory() and getData() methods
      *
@@ -32,14 +26,12 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
             'firstName' => 'John',
             'lastName'  => 'Doe',
         ]);
-
-        // Test the factory method
+        
         $this->assertEquals(
             $user,
             $userCompare
         );
-
-        // Test the getData output
+        
         $this->assertEquals(
             $user->getData(),
             $userCompare->getData()

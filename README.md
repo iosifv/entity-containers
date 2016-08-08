@@ -1,6 +1,6 @@
-# object-containers
+# entityContainers
 
-object-containers is a library which can be used to create entities which have to be sent through an API and reconstructed at the other end.
+entityContainers is a library which can be used to create entities which have to be sent through an API and reconstructed at the other end.
 Those entities can also be organized into containers. 
 
 ## Installation
