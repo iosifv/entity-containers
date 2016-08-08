@@ -57,9 +57,8 @@ class AccountEntity implements EntityInterface
 
     /**
      * @param String $username
-
      *
-*@return AccountEntity
+     * @return AccountEntity
      */
     public function setUsername($username)
     {
@@ -77,9 +76,8 @@ class AccountEntity implements EntityInterface
 
     /**
      * @param String $password
-
      *
-*@return AccountEntity
+     * @return AccountEntity
      */
     public function setPassword($password)
     {
@@ -97,9 +95,8 @@ class AccountEntity implements EntityInterface
 
     /**
      * @param int $type
-
      *
-*@return AccountEntity
+     * @return AccountEntity
      * @throws \Exception
      */
     public function setType($type)
