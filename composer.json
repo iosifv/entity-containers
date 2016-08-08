@@ -25,8 +25,8 @@
     "psr-4": {
       "VighIosif\\EntityContainers\\": "src/",
       "VighIosif\\EntityContainers\\Abstracts\\": "src/abstracts/",
-      "VighIosif\\EntityContainers\\Classes\\": "src/classes/",
-      "VighIosif\\EntityContainers\\Classes\\Containers\\": "src/classes/containers/",
+      "VighIosif\\EntityContainers\\SampleEntity\\": "src/sampleEntity/",
+      "VighIosif\\EntityContainers\\SampleEntity\\Containers\\": "src/sampleEntity/containers/",
       "VighIosif\\EntityContainers\\Exceptions\\": "src/exceptions/",
       "VighIosif\\EntityContainers\\Interfaces\\": "src/interfaces/",
       "VighIosif\\EntityContainers\\Traits\\": "src/traits/",

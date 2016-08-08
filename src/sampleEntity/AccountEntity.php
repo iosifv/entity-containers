@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\EntityContainers\Classes;
+namespace VighIosif\EntityContainers\SampleEntity;
 
 use VighIosif\EntityContainers\Interfaces\EntityInterface;
 use VighIosif\EntityContainers\Traits\Methods\FactoryMethodTrait;
@@ -9,7 +9,7 @@ use VighIosif\EntityContainers\Traits\Methods\UniqueIdentifierMethodTrait;
 use VighIosif\EntityContainers\Traits\Properties\PropertyCreatedAndDeletedTrait;
 use VighIosif\EntityContainers\Traits\Properties\PropertyIdTrait;
 
-class Account implements EntityInterface
+class AccountEntity implements EntityInterface
 {
     use FactoryMethodTrait;
     use GetDataMethodTrait;
@@ -34,7 +34,7 @@ class Account implements EntityInterface
      * @var String
      */
     private $password;
-    
+
     private $mandatoryFields = ['type', 'username', 'password'];
 
 
@@ -57,8 +57,9 @@ class Account implements EntityInterface
 
     /**
      * @param String $username
+
      *
-     * @return Account
+*@return AccountEntity
      */
     public function setUsername($username)
     {
@@ -76,8 +77,9 @@ class Account implements EntityInterface
 
     /**
      * @param String $password
+
      *
-     * @return Account
+*@return AccountEntity
      */
     public function setPassword($password)
     {
@@ -95,8 +97,9 @@ class Account implements EntityInterface
 
     /**
      * @param int $type
+
      *
-     * @return Account
+*@return AccountEntity
      * @throws \Exception
      */
     public function setType($type)

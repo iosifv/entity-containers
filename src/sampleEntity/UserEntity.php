@@ -1,6 +1,6 @@
 <?php
 
-namespace VighIosif\EntityContainers\Classes;
+namespace VighIosif\EntityContainers\SampleEntity;
 
 use VighIosif\EntityContainers\Interfaces\EntityInterface;
 use VighIosif\EntityContainers\Traits\Methods\FactoryMethodTrait;
@@ -10,7 +10,7 @@ use VighIosif\EntityContainers\Traits\Properties\PrivatePropertyAccessTrait;
 use VighIosif\EntityContainers\Traits\Properties\PropertyIdTrait;
 use VighIosif\EntityContainers\Traits\Properties\PropertyProtectionTrait;
 
-class User implements EntityInterface
+class UserEntity implements EntityInterface
 {
     use FactoryMethodTrait;
     use GetDataMethodTrait;
@@ -34,7 +34,7 @@ class User implements EntityInterface
     /**
      * @param mixed $firstName
      *
-     * @return User
+     * @return UserEntity
      */
     public function setFirstName($firstName)
     {
@@ -53,7 +53,7 @@ class User implements EntityInterface
     /**
      * @param mixed $lastName
      *
-     * @return User
+     * @return UserEntity
      */
     public function setLastName($lastName)
     {

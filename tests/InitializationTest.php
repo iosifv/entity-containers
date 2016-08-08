@@ -1,7 +1,7 @@
 <?php
 namespace VighIosif\EntityContainers\Tests;
 
-use VighIosif\EntityContainers\Classes\User;
+use VighIosif\EntityContainers\SampleEntity\UserEntity;
 use VighIosif\EntityContainers\Exceptions\ExceptionConstants;
 use VighIosif\EntityContainers\Exceptions\PropertyException;
 
@@ -22,12 +22,12 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
      */
     public function testFactoryConsistency()
     {
-        $user = new User();
+        $user = new UserEntity();
         $user->setId(5)
             ->setFirstName('John')
             ->setLastName('Doe');
 
-        $userCompare = User::factory([
+        $userCompare = UserEntity::factory([
             'id'        => 5,
             'firstName' => 'John',
             'lastName'  => 'Doe',
@@ -48,7 +48,7 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
         // Test to show the main feature of this library :)
         $this->assertEquals(
             $user,
-            User::factory($user->getData())
+            UserEntity::factory($user->getData())
         );
     }
 
@@ -59,7 +59,7 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
     {
         $caughtException = null;
         try {
-            $user = new User();
+            $user = new UserEntity();
             $user->setId('john123');
         } catch (\Exception $e) {
             $caughtException = $e;
@@ -93,7 +93,7 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
      */
     public function testMagicSettersAndGetters()
     {
-        $user                         = new User();
+        $user                         = new UserEntity();
         $propertyNotExistingException = null;
         try {
             $user->inexistentProperty = 'Blah';
@@ -108,11 +108,11 @@ class InitializationTest extends \PHPUnit_Framework_TestCase
             $propertyPrivateException = $e;
         }
 
-        $user = new User();
+        $user = new UserEntity();
         $user->setAccessPrivateProperties(true);
         $user->firstName = 'John';
         $user->lastName  = 'Doe';
-        $userCompare     = new User();
+        $userCompare     = new UserEntity();
         $userCompare->setAccessPrivateProperties(true)
             ->setFirstName('John')
             ->setLastName('Doe');
