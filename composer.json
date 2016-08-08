@@ -26,6 +26,7 @@
       "VighIosif\\ObjectContainers\\": "src/",
       "VighIosif\\ObjectContainers\\Abstracts\\": "src/abstracts/",
       "VighIosif\\ObjectContainers\\Classes\\": "src/classes/",
+      "VighIosif\\ObjectContainers\\Classes\\Containers\\": "src/classes/containers/",
       "VighIosif\\ObjectContainers\\Exceptions\\": "src/exceptions/",
       "VighIosif\\ObjectContainers\\Interfaces\\": "src/interfaces/",
       "VighIosif\\ObjectContainers\\Traits\\": "src/traits/",

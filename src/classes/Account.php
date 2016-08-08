@@ -23,6 +23,10 @@ class Account implements EntityInterface
     const TYPE_USER        = 3;
 
     /**
+     * @var integer
+     */
+    private $type;
+    /**
      * @var String
      */
     private $username;
@@ -30,10 +34,8 @@ class Account implements EntityInterface
      * @var String
      */
     private $password;
-    /**
-     * @var integer
-     */
-    private $type;
+    
+    private $mandatoryFields = ['type', 'username', 'password'];
 
 
     public function getUserTypes()

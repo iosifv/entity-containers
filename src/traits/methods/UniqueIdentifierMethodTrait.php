@@ -16,8 +16,9 @@ trait UniqueIdentifierMethodTrait
     public function getUniqueIdentifier()
     {
         $unique = '';
-        // Todo: getDbColumn() does not exist. Maybe switch to using mandatory fields?
-        $fields = $this->getDbColumns();
+        // Todo: getDbColumn() does not exist. Switch to using mandatory fields?
+        // $fields = $this->getDbColumns();
+        $fields = $this->mandatoryFields;
         foreach ($fields as $field) {
             $str = ucwords(str_replace('_', '', $field));
             $unique .= $this->{"get" . $str}();
