@@ -1,8 +1,9 @@
 {
   "name": "vigh-iosif/object-containers",
   "description": "This is a library for using containers of objects. This structure provides a few neat advantages.",
+  "minimum-stability": "stable",
+  "version": "1.0",
   "license": "Apache",
-  "version": "0.1",
   "authors": [
     {
       "name": "Iosif Vigh",
