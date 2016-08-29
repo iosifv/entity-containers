@@ -31,4 +31,17 @@ trait UniqueIdentifierMethodTrait
         }
         return md5($unique);
     }
+
+    /**
+     * Returns a hash after setting created and deleted to now so that it's not taken into account when comparing.
+     *
+     * @return string
+     */
+    public function getSpl()
+    {
+        $newObj = clone $this;
+        $newObj->setCreatedToNow();
+        $newObj->setDeletedToNow();
+        return spl_object_hash($newObj);
+    }
 }

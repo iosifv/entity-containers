@@ -29,28 +29,33 @@ abstract class EntityContainer implements IteratorAggregate, Countable
      */
     public static function factory(array $entities = [])
     {
-        // Need to use static because this is in an abstract class will be extended.
+        // Need to use static because this is in an abstract class that will be extended.
         $entityClass = static::ENTITY_CLASS;
         $container   = new static();
 
         foreach ($entities as $entity) {
-            if (is_array($entity)) {
-                // If array, we just add the factorized object.
-                $newEntity = $entityClass::factory($entity);
-                $container->add($newEntity);
-            } elseif (is_object($entity) && $entity instanceof \stdClass) {
-                // If it's a standard object, the process is the same as with an array, but we cast to array first.
-                $newEntity = $entityClass::factory((array) $entity);
-                $container->add($newEntity);
-            } elseif ($entity instanceof EntityInterface) {
-                // If it's an entity which is an instanceof EntityInterface, we're lucky because nothing is needed.
-                $container->add($entity);
-            } else {
-                // Something fishy is happening if we got here!
-                throw new EntityContainerException(
-                    ExceptionConstants::INVALID_ENTITY_FORMAT,
-                    ExceptionConstants::INVALID_ENTITY_FORMAT_CODE
-                );
+            switch ($entity) {
+                case is_array($entity):
+                    // If array, we just add the factorized object.
+                    $newEntity = $entityClass::factory($entity);
+                    $container->add($newEntity);
+                    break;
+                case is_object($entity) && $entity instanceof \stdClass:
+                    // If it's a standard object, the process is the same as with an array, but we cast to array first.
+                    $newEntity = $entityClass::factory((array) $entity);
+                    $container->add($newEntity);
+                    break;
+                case $entity instanceof EntityInterface:
+                    // If it's an entity which is an instanceof EntityInterface, we're lucky because nothing is needed.
+                    $container->add($entity);
+                    break;
+                default:
+                    // Something fishy is happening if we got here!
+                    throw new EntityContainerException(
+                        ExceptionConstants::INVALID_ENTITY_FORMAT,
+                        ExceptionConstants::INVALID_ENTITY_FORMAT_CODE
+                    );
+                    break;
             }
         }
         return $container;
@@ -134,13 +139,12 @@ abstract class EntityContainer implements IteratorAggregate, Countable
             /**
              * @var $currentEntity EntityInterface
              */
-            if (!$this->exists($currentEntity)) {
-                $this->add($currentEntity);
-            } else {
-                $currentEntity = $this->get($currentEntity->getUniqueIdentifier())->merge($currentEntity);
+            if ($this->exists($currentEntity)) {
+                $existingEntity = $this->get($currentEntity->getUniqueIdentifier());
+                $currentEntity  = $existingEntity->merge($currentEntity);
                 $this->deleteByEntity($currentEntity);
-                $this->add($currentEntity);
             }
+            $this->add($currentEntity);
         }
         return $this;
     }
@@ -154,26 +158,28 @@ abstract class EntityContainer implements IteratorAggregate, Countable
      */
     public function exists($entities)
     {
-
-        if (is_array($entities)) {
-            foreach ($entities as $entity) {
-                if (!array_key_exists($entity, $this->list)) {
-                    return false;
+        switch ($entities) {
+            case is_array($entities):
+                foreach ($entities as $entity) {
+                    if (!array_key_exists($entity, $this->list)) {
+                        return false;
+                    }
                 }
-            }
-            return true;
-        } elseif (is_scalar($entities)) {
-            if (isset($this->list[$entities])) {
                 return true;
-            }
-            return false;
-        } elseif ($entities instanceof EntityInterface) {
-            if (is_array($this->list)) {
-                return array_key_exists($entities->getUniqueIdentifier(), $this->list);
-            }
-            return false;
+            case is_scalar($entities):
+                if (isset($this->list[$entities])) {
+                    return true;
+                }
+                return false;
+
+            case $entities instanceof EntityInterface:
+                if (is_array($this->list)) {
+                    return array_key_exists($entities->getUniqueIdentifier(), $this->list);
+                }
+                return false;
+            default:
+                return true;
         }
-        return false;
     }
 
     /**
@@ -181,14 +187,15 @@ abstract class EntityContainer implements IteratorAggregate, Countable
      *
      * @param string|integer $identifier
      *
-     * @return bool|EntityInterface
+     * @return EntityInterface
+     * @throws EntityContainerException
      */
     public function get($identifier)
     {
         if (isset($this->list[$identifier])) {
             return $this->list[$identifier];
         }
-        return false;
+        throw new EntityContainerException('Could not find: ' . $identifier);
     }
 
     /**

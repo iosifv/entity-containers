@@ -59,7 +59,7 @@ trait FactoryMethodTrait
             }
         }
 
-        // Automatic force validation
+        // Force validation if the validation function is present (i.e. the trait is added)
         if (method_exists($instance, 'validateMandatoryFields') &&
             $instance->validateMandatoryFields() !== true
         ) {
