@@ -1,11 +1,14 @@
 # entityContainers
 
-entityContainers is a library which can be used to create entities which have to be sent through an API and reconstructed at the other end.
+entityContainers is a library that can be used to create entities which have to be sent through an API and reconstructed at the other end.
 Those entities can also be organized into containers. 
 
 ## Installation
 
 Use [Composer](https://getcomposer.org/) to download and install the library as well as its dependencies.
+```
+composer require vighiosif
+```
 
 ## Integration
 
@@ -23,6 +26,22 @@ The tests are also very good examples of what the library is capable of.
 * This will always be true: $entity = EntityClass::factory($entity->getData())
 * If the entity reflects the database, the factory() method can be called with the result of a FETCH_ASSOC call.
 
+## File Structure
+```
+entityContainers
+├── src
+│   ├── abstracts           * stores abstract classes
+│   ├── exceptions
+│   ├── interfaces          * stores interfaces needed for entities
+│   ├── sampleEntity        * sample entity classes
+│   │   └── containers      * containers for the sample entities
+│   └── traits
+│       ├── methods         * traits related to a functionality
+│       └── properties      * traits related to a possible property
+├── tests                   * PHPUnit tests
+└── vendor
+
+```
 ## Author
 
 * [vighiosif](https://github.com/vighiosif)
