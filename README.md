@@ -42,6 +42,6 @@ entityContainers
 ```
 ## Author
 
-* [vighiosif](https://github.com/vighiosif)
+* [iosifv](https://github.com/iosifv)
 
 The present library is my approach on the initial code from [degola](https://github.com/degola).
