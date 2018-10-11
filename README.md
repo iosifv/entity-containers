@@ -6,9 +6,7 @@ Those entities can also be organized into containers.
 ## Installation
 
 Use [Composer](https://getcomposer.org/) to download and install the library as well as its dependencies.
-```
-composer require vighiosif
-```
+
 
 ## Integration
 
