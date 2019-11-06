@@ -1,7 +1,7 @@
 # entityContainers
 
-entityContainers is a library that can be used to create entities which have to be sent through an API and reconstructed at the other end.
-Those entities can also be organized into containers. 
+entityContainers is a library that can be used to create entities (objects) or collections of entities. Those can be decomposed down to json (transported to a different server through http) and then reconstructed back with accuracy on the other side.
+
 
 ## Installation
 
@@ -14,6 +14,7 @@ There is a class folder which is meant to be an example of how to build your ent
 There are some traits which need to be added to your entities depending on the needs of your project: FactoryMethodTrait, GetDataMethodTrait, MergeMethodTrait
 The tests are also very good examples of what the library is capable of.
 
+
 ## Main Features
 
 * A bunch of entity objects can be stored into an Entity Container
@@ -23,6 +24,7 @@ The tests are also very good examples of what the library is capable of.
 * factory() method will create a new Entity or Container object with all information set
 * This will always be true: $entity = EntityClass::factory($entity->getData())
 * If the entity reflects the database, the factory() method can be called with the result of a FETCH_ASSOC call.
+
 
 ## File Structure
 ```
@@ -43,5 +45,3 @@ entityContainers
 ## Author
 
 * [iosifv](https://github.com/iosifv)
-
-The present library is my approach on the initial code from [degola](https://github.com/degola).
